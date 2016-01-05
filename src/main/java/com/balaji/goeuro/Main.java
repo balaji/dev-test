@@ -36,7 +36,7 @@ public class Main {
 
         boolean result = main.positionService.createCSVForPositionData(args[0]);
         if(result) {
-            System.out.println("CSV file created.");
+            System.out.println("CSV file created. Please check `output.csv` in current directory");
         } else {
             System.out.println("Error in creating CSV file.");
         }
