@@ -1,0 +1,6 @@
+spring:
+  main:
+    show_banner: false
+
+api:
+  url: http://api.goeuro.com/api/v2
