@@ -11,6 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 
+/*
+ * Service class to Parse data from API endpoint and to create CSV file
+ */
 @Service
 @Log4j
 public class PositionService {
@@ -25,6 +28,13 @@ public class PositionService {
         return mapper.readValue(uri.toURL(), Position[].class);
     }
 
+    /**
+     * Creates a CSV file in the current directory using the data
+     * from the API endpoint queried with the query string
+     *
+     * @param queryString to search in the API
+     * @return
+     */
     public boolean createCSVForPositionData(String queryString) {
         Position[] positions;
         try {
@@ -40,12 +50,18 @@ public class PositionService {
 
         for (int i = 0; i < positions.length; i++) {
             Position position = positions[i];
-            csvStrings[i + 1] = String.format("%s,%s,%s,%s,%s", position.getId(), position.getName(), position.getType(),
-                    position.getGeoPosition().getLatitude(), position.getGeoPosition().getLongitude());
+            csvStrings[i + 1] = String.format("%s,%s,%s,%s,%s", position.getId(),
+                    position.getName(), position.getType(), position.getGeoPosition().getLatitude(),
+                    position.getGeoPosition().getLongitude());
         }
         return createFile(csvStrings);
     }
 
+    /**
+     * Method creates CSV file from a given array of lines.
+     * @param data lines for CSV file
+     * @return boolean to indicate whether the operation was successful
+     */
     private boolean createFile(String[] data) {
         FileWriter fileWriter = null;
         try {

@@ -3,6 +3,9 @@ package com.balaji.goeuro.domain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+/*
+ * Domain object for the Position data in JSON file
+ */
 @Data
 public class Position {
     @JsonProperty("_id")

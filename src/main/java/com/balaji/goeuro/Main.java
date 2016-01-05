@@ -19,6 +19,10 @@ public class Main {
     @Autowired
     PositionService positionService;
 
+    /**
+     * Creates an ObjectMapper class for Spring injection
+     * @return
+     */
     @Bean
     public ObjectMapper getMapper() {
         ObjectMapper mapper = new ObjectMapper();
